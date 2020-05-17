@@ -14,7 +14,7 @@ customerRouter.get('', (request, response, next) => {
 });
 
 customerRouter.get('/:id', (request, response, next) => {
-    const id = +request.params.id;
+    const id =+ request.params.id;
     customerService.getCustomerById(id).then(cust => {
         if (!cust) {
             response.sendStatus(404);

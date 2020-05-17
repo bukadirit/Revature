@@ -2,7 +2,7 @@ import { db } from '../daos/db';
 import { Customer, CustomerLine } from '../models/customer';
 
 export function getCustomer(): Promise<Customer[]> {
-    const sql = 'SELECT * FROM p0.customer';
+    const sql = 'SELECT * FROM p0.cus_info';
 
     return db.query<CustomerLine>(sql, []).then(result => {
         
@@ -17,7 +17,7 @@ export function getCustomer(): Promise<Customer[]> {
 
 export function getCustomerById(id: number): Promise<Customer> {
     
-    const sql = 'SELECT * FROM p0.customer WHERE id = $1';
+    const sql = 'SELECT * FROM p0.cus_info WHERE id = $1';
 
     return db.query<CustomerLine>(sql, [id])
         .then(result => result.rows.map(row => Customer.from(row))[0]);

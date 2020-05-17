@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { db } from './daos/db';
 import { customerRouter } from './routers/customer-router';
+import { ordersRouter } from './routers/orders-router';
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.set('port', port);
 app.use(bodyParser.json());
 
 app.use('/customer', customerRouter);
+app.use('/order', ordersRouter);
 
 /*
     Listen for SIGINT signal - issued by closing the server with ctrl+c
