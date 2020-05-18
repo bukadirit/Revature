@@ -9,8 +9,8 @@ const app = express();
 const port = process.env.port || 3000;
 app.set('port', port);
 
-app.use(bodyParser.json());
 
+app.use(bodyParser.json());
 app.use('/customer', customerRouter);
 app.use('/order', ordersRouter);
 

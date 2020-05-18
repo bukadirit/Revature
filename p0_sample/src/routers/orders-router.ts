@@ -1,5 +1,6 @@
 import express from 'express';
 import * as ordersService from '../services/orders-service';
+import { Systems } from '../models/orders';
 
 export const ordersRouter = express.Router();
 
@@ -39,4 +40,54 @@ ordersRouter.get('', (request, response, next) => {
         response.sendStatus(500);
     });
 });
+/*
+ordersRouter.post('', (request, response, next) => {
+    const syst = request.body;
+    ordersService.addSystem(syst)
+        .then(newSystems => {
+            response.status(201);
+            response.json(newSystems);
+            next();
+        }).catch(err => {
+            response.sendStatus(500);
+            console.log(err)
+            next();
+        });
+        
+});
+*/
+ordersRouter.post('', async (request, response, next) => {
+    const system = request.body;
+    let newSystems: Systems;
 
+    try {
+        newSystems = await ordersService.addSystem(system);
+    } catch (err) {
+        console.log(err)
+        response.sendStatus(500);
+        return;
+    }
+
+    if (newSystems) {
+        response.status(201);
+        response.json(newSystems);
+    }
+    next();
+});
+
+ordersRouter.patch('', (request, response, next) => {
+    const system = request.body;
+    //console.log(system.length)
+    ordersService.patchSystem(system)
+        .then(patchedSystem => {
+            if (patchedSystem) {
+                response.json(patchedSystem);
+            } else {
+                response.sendStatus(404);
+            }
+        }).catch(err => {
+            response.sendStatus(500);
+        }).finally(() => {
+            next();
+        })
+});
