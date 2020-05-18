@@ -1,42 +1,34 @@
 export class Cards {
-    customerId: number;
-    firstName: string;
-    lastName: string;
-    ccNumber: number;
+    id: number;
     ccType: string;
-    expiration: Date;
+    ccNumber: number;
+    expireDate: Date;
     securityCode: number;
-    cardId: number;
-    
+    customerId: number;
+
     static from(obj:CardsLine): Cards {
         const card = new Cards(
-            obj.customer_id, obj.first_name, obj.last_name, obj.cc_number, obj.cc_type, obj.expiration, obj.security_code, obj.card_id
+           obj.id , obj.cc_type, obj.cc_number,  obj.expire_date, obj.security_code, obj.customer_id
         );
         return card;
     }
 
-    constructor(id: number, firstName: string, lastName: string, ccNumber: number,
-                ccType: string, expiration: Date, securityCode: number, cardId: number) {
-        this.customerId = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.ccNumber = ccNumber;
+    constructor(id: number,  ccType: string, ccNumber: number,
+                expirDate: Date, securityCode: number, customerId: number) {
+        this.id = id;
         this.ccType = ccType;
-        this.expiration = expiration;
+        this.ccNumber = ccNumber;
+        this.expireDate = expirDate;
         this.securityCode = securityCode;
-        this.cardId = cardId;
-       
-        
+        this.customerId = customerId;
     }
 }
 
 export interface CardsLine {
-    customer_id: number;
-    first_name: string;
-    last_name: string;
-    cc_number: number;
+    id: number;
     cc_type: string;
-    expiration: Date;
+    cc_number: number;
+    expire_date: Date;
     security_code: number;
-    card_id: number;
+    customer_id: number;
 }
