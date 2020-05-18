@@ -40,22 +40,7 @@ ordersRouter.get('', (request, response, next) => {
         response.sendStatus(500);
     });
 });
-/*
-ordersRouter.post('', (request, response, next) => {
-    const syst = request.body;
-    ordersService.addSystem(syst)
-        .then(newSystems => {
-            response.status(201);
-            response.json(newSystems);
-            next();
-        }).catch(err => {
-            response.sendStatus(500);
-            console.log(err)
-            next();
-        });
-        
-});
-*/
+
 ordersRouter.post('', async (request, response, next) => {
     const system = request.body;
     let newSystems: Systems;

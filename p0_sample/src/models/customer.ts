@@ -37,3 +37,13 @@ export interface CustomerLine {
     state: string;
     zip: number;
 }
+/*
+{
+	"firstName": "Reshi",
+	"lastName": "Ram",
+	"address": "Pokemon Black",
+	"city": "castle",
+	"state": "GameFreak",
+	"zip": 22122
+}
+*/
