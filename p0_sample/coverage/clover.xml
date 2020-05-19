@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1589901916447" clover="3.2.0">
-  <project timestamp="1589901916447" name="All files">
-    <metrics statements="100" coveredstatements="57" conditionals="16" coveredconditionals="5" methods="29" coveredmethods="10" elements="145" coveredelements="72" complexity="0" loc="100" ncloc="100" packages="4" files="5" classes="5"/>
+<coverage generated="1589905119204" clover="3.2.0">
+  <project timestamp="1589905119204" name="All files">
+    <metrics statements="220" coveredstatements="119" conditionals="35" coveredconditionals="10" methods="67" coveredmethods="25" elements="322" coveredelements="154" complexity="0" loc="220" ncloc="220" packages="4" files="9" classes="9"/>
     <package name="daos">
-      <metrics statements="32" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="12" coveredmethods="0"/>
+      <metrics statements="59" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="25" coveredmethods="0"/>
       <file name="customer-dao.ts" path="C:\Users\Dragonite\Documents\batches\com.revature\p0_sample\src\daos\customer-dao.ts">
         <metrics statements="30" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="12" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -39,12 +39,42 @@
       </file>
       <file name="db.ts" path="C:\Users\Dragonite\Documents\batches\com.revature\p0_sample\src\daos\db.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+      </file>
+      <file name="orders-dao.ts" path="C:\Users\Dragonite\Documents\batches\com.revature\p0_sample\src\daos\orders-dao.ts">
+        <metrics statements="27" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
       </file>
     </package>
     <package name="models">
-      <metrics statements="10" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <metrics statements="38" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
       <file name="customer.ts" path="C:\Users\Dragonite\Documents\batches\com.revature\p0_sample\src\models\customer.ts">
         <metrics statements="10" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -58,9 +88,40 @@
         <line num="24" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
       </file>
+      <file name="orders.ts" path="C:\Users\Dragonite\Documents\batches\com.revature\p0_sample\src\models\orders.ts">
+        <metrics statements="28" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+      </file>
     </package>
     <package name="routers">
-      <metrics statements="42" coveredstatements="42" conditionals="6" coveredconditionals="5" methods="10" coveredmethods="10"/>
+      <metrics statements="88" coveredstatements="88" conditionals="12" coveredconditionals="10" methods="25" coveredmethods="25"/>
       <file name="customer-router.ts" path="C:\Users\Dragonite\Documents\batches\com.revature\p0_sample\src\routers\customer-router.ts">
         <metrics statements="42" coveredstatements="42" conditionals="6" coveredconditionals="5" methods="10" coveredmethods="10"/>
         <line num="1" count="1" type="stmt"/>
@@ -106,9 +167,58 @@
         <line num="68" count="1" type="stmt"/>
         <line num="70" count="2" type="stmt"/>
       </file>
+      <file name="orders-router.ts" path="C:\Users\Dragonite\Documents\batches\com.revature\p0_sample\src\routers\orders-router.ts">
+        <metrics statements="46" coveredstatements="46" conditionals="6" coveredconditionals="5" methods="15" coveredmethods="15"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="20" count="5" type="stmt"/>
+        <line num="21" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="56" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="64" count="3" type="stmt"/>
+        <line num="66" count="3" type="stmt"/>
+        <line num="68" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="69" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
+        <line num="77" count="3" type="stmt"/>
+      </file>
     </package>
     <package name="services">
-      <metrics statements="16" coveredstatements="6" conditionals="10" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <metrics statements="35" coveredstatements="13" conditionals="23" coveredconditionals="0" methods="11" coveredmethods="0"/>
       <file name="customer-services.ts" path="C:\Users\Dragonite\Documents\batches\com.revature\p0_sample\src\services\customer-services.ts">
         <metrics statements="16" coveredstatements="6" conditionals="10" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -127,6 +237,28 @@
         <line num="44" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="45" count="0" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
+      </file>
+      <file name="orders-service.ts" path="C:\Users\Dragonite\Documents\batches\com.revature\p0_sample\src\services\orders-service.ts">
+        <metrics statements="19" coveredstatements="7" conditionals="13" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="11"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="46" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
       </file>
     </package>
   </project>

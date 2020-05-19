@@ -66,6 +66,7 @@ ordersRouter.patch('', (request, response, next) => {
     ordersService.patchSystem(system)
         .then(patchedSystem => {
             if (patchedSystem) {
+                response.status(201);
                 response.json(patchedSystem);
             } else {
                 response.sendStatus(404);
