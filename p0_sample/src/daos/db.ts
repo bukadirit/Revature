@@ -11,14 +11,13 @@
 */
 
 
-
 import { Pool } from 'pg';
 
 export const db = new Pool({
     database: 'postgres',
-    host: "database-1.ci62qbf4ot1k.us-east-2.rds.amazonaws.com",
+    host: process.env.P0_APP_URL,
     port: 5432,
-    user: "buka",
-    password: "p4ssw0rd"
+    user: process.env.P0_APP_ROLE,
+    password: process.env.P0_APP_PASS
 });
 
