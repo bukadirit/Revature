@@ -59,6 +59,7 @@ cardsRouter.patch('', (request, response, next) => {
     cardsService.patchCard(card)
         .then(patchedCard => {
             if (patchedCard) {
+                response.status(201);
                 response.json(patchedCard);
             } else {
                 response.sendStatus(404);
