@@ -1,6 +1,10 @@
+/**
+ * Interfaces with the database and returns information to the order service
+ */
 import { db } from '../daos/db';
 import { Orders, OrdersLine, Systems, SystemsLine } from '../models/orders';
 
+//retrieve orders from the database that exist in the orders view
 export function getOrder(): Promise<Orders[]> {
     const sql = 'SELECT * FROM p0.orders';
 
@@ -15,6 +19,7 @@ export function getOrder(): Promise<Orders[]> {
     });
 }
 
+//retrieve orders by id from the database that exist in the orders view
 export function getOrderById(id: number): Promise<Orders> {
     
     const sql = 'SELECT * FROM p0.orders WHERE id = $1';
@@ -23,6 +28,7 @@ export function getOrderById(id: number): Promise<Orders> {
         .then(result => result.rows.map(row => Orders.from(row))[0]);
 };
 
+//retrieve orders from the database that exist in the orders view that have not been ordered
 export function getUnordered(): Promise<Orders[]> {
     const sql = 'SELECT * FROM p0.orders WHERE customer_id IS NULL';
 
@@ -35,6 +41,7 @@ export function getUnordered(): Promise<Orders[]> {
     });
 }
 
+//add a new system to the system_ordered table and return info to order service
 export async function addSystem(system: Systems): Promise<Systems> {
         const sql = `INSERT INTO p0.system_ordered (system_brand, system_type, processor, ram, capacity, chipset,\
                      graphics_card, cooler_type, price) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`
@@ -54,6 +61,7 @@ export async function addSystem(system: Systems): Promise<Systems> {
         return result.rows.map(Systems.from)[0];
         }
     
+//update a system in the System_ordered table and return info 
 export function patchSystem(system: Systems, id:number): Promise<Systems> {
 
         const sql = `UPDATE p0.system_ordered SET system_brand = COALESCE($1, system_brand), system_type = COALESCE($2, system_type),\

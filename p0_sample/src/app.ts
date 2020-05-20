@@ -1,3 +1,9 @@
+/**
+ * This is a simple REST API that utilizes express and postgres to access, modify, and store customer information such as 
+ * customer orders, credit cards, and addresses from a custom computer building shop. No methods for deleting said information
+ * has been implemented in this api.
+ */
+
 import express from 'express';
 import bodyParser from 'body-parser';
 import { db } from './daos/db';
@@ -17,22 +23,18 @@ app.use('/customer', customerRouter);
 app.use('/order', ordersRouter);
 app.use('/card', cardsRouter)
 
-/*
-    Listen for SIGINT signal - issued by closing the server with ctrl+c
-    This releases the database connections prior to app being stopped
-*/
-// process.on('SIGINT', () => {
-//     db.end().then(() => {
-//         console.log('Database pool closed');
-//     });
-// });
+ /*process.on('SIGINT', () => {
+    db.end().then(() => {
+    console.log('Database pool closed');
+     });
+ });
 
 process.on('unhandledRejection', () => {
     db.end().then(() => {
         console.log('Database pool closed');
     });
 });
-
+*/
 app.listen(port, () => {
     console.log(`Home app running at http://localhost:${port}`);
 });

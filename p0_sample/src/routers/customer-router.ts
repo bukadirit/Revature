@@ -1,9 +1,14 @@
+/**
+ *This router retreives complete customer address information  
+*/
+
 import express from 'express';
 import * as customerService from '../services/customer-services';
 import { Customer } from '../models/Customer';
 
 export const customerRouter = express.Router();
 
+//Get all customers along with their complete current address
 customerRouter.get('', (request, response, next) => {
     customerService.getCustomer().then(cust => {
         response.json(cust);
@@ -14,6 +19,7 @@ customerRouter.get('', (request, response, next) => {
     });
 });
 
+//Get a specific customer by ID
 customerRouter.get('/:id', (request, response, next) => {
     const id =+ request.params.id;
     customerService.getCustomerById(id).then(cust => {
@@ -30,6 +36,7 @@ customerRouter.get('/:id', (request, response, next) => {
     })
 });
 
+//Add a new customer 
 customerRouter.post('', async (request, response, next) => {
     const cust = request.body;
     let newCustomer: Customer;
@@ -50,6 +57,7 @@ customerRouter.post('', async (request, response, next) => {
     next();
 });
 
+//Update information on an existing customer
 customerRouter.patch('', async (request, response, next) => {
     const cust = request.body;
     let patchCustomer: Customer;
