@@ -107,19 +107,37 @@
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -134,7 +152,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -157,18 +177,25 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Customer } from '../models/Customer';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * Provides services to the customer router and provides information checks where necessary
+ */
+import { Customer } from '../models/Customer';
 import * as customerDao from '../daos/customer-dao';
 &nbsp;
+//return all customers with complete address
 export function <span class="fstat-no" title="function not covered" >getCustomer(</span>): Promise&lt;Customer[]&gt; {
 <span class="cstat-no" title="statement not covered" >    return customerDao.getCustomer();</span>
 }
 &nbsp;
+//return customers by ID
 export function <span class="fstat-no" title="function not covered" >getCustomerById(</span>id: number): Promise&lt;Customer&gt; {
 <span class="cstat-no" title="statement not covered" >    return customerDao.getCustomerById(id);</span>
 }
 &nbsp;
+//return newly added customer info and check validity
 export function addCustomer(cust: any): Promise&lt;Customer&gt; {
+    //create a new customer with the follopwing parameters
     const newCustomer = new Customer(
         undefined,
         cust.firstName,
@@ -178,16 +205,19 @@ export function addCustomer(cust: any): Promise&lt;Customer&gt; {
         cust.state,
         cust.zip,
     );
-&nbsp;
+    
+    //confirm info is valid, pass it to dao, and return new customer
     <span class="missing-if-branch" title="if path not taken" >I</span>if ( cust.firstName &amp;&amp; cust.lastName &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >cust.address </span>&amp;&amp;
 <span class="branch-3 cbranch-no" title="branch not covered" >         cust.city </span>&amp;&amp; <span class="branch-4 cbranch-no" title="branch not covered" >cust.state </span>&amp;&amp; <span class="branch-5 cbranch-no" title="branch not covered" >cust.zip) </span>
          {
 <span class="cstat-no" title="statement not covered" >        return customerDao.addCustomer(newCustomer);</span>
     } else {
+        //return an error of 422 if check fails
         return new Promise((resolve, reject) =&gt; reject(422));
     }
 }
 &nbsp;
+//update an existing customer
 export function patchCustomer(input: any): Promise&lt;Customer&gt; {
  
 const cust = new Customer(
@@ -199,11 +229,11 @@ const cust = new Customer(
     input.state,
     input.zip
 );
-&nbsp;
+//if no id is provided, throw an error with status code 400
 if (!cust.id) {
     throw new Error ('400');
 }
-&nbsp;
+ //pass the information to the dao and return updated customer
 return customerDao.patchCustomer(cust);
 }
 &nbsp;
@@ -214,7 +244,7 @@ return customerDao.patchCustomer(cust);
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue May 19 2020 16:58:23 GMT-0400 (Eastern Daylight Time)
+                at Wed May 20 2020 10:31:02 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../prettify.js"></script>

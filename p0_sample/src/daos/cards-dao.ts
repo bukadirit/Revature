@@ -1,3 +1,4 @@
+/*istanbul ignore file*/
 /**
  * Interfaces with the database and returns information to the cards service
  */
