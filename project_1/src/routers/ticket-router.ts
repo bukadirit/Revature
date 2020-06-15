@@ -4,6 +4,7 @@ import { ViewTicket } from "../models/view_ticket";
 import { ManagerView } from "../models/manager_view";
 import { checkAuthenticated, checkNotAuthenticated } from "../auth/index";
 import { Ticket } from "../models/ticket";
+import { UpdateView } from "../models/ticket_update";
 
 export const ticketRouter = express.Router();
 ticketRouter.get("/", async (request, response, next) => {
@@ -68,3 +69,22 @@ ticketRouter.post(
     next();
   }
 );
+
+ticketRouter.patch("/", checkNotAuthenticated, async (request, response) => {
+  const item = request.body;
+  let ticket: UpdateView;
+
+  try {
+    ticket = await ticketService.patchTicket(item);
+  } catch (err) {
+    response.sendStatus(500);
+    return;
+  }
+
+  if (!ticket) {
+    response.sendStatus(404);
+  } else {
+    response.status(200);
+    response.json(ticket);
+  }
+});

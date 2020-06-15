@@ -62,3 +62,20 @@ export const sortTicket = async (tag: string) => {
   });
   return t;
 };
+
+export const patchTicket = async (i: any, j: any, k: any) => {
+  const id = i;
+  const status = j;
+  const reimbId = k;
+  await Axios("http://192.168.1.7:3001/ticket", {
+    method: "PATCH",
+    withCredentials: true,
+    headers: { "content-type": "application/json" },
+    data: {
+      id,
+      status,
+      reimbId,
+    },
+  });
+  return;
+};

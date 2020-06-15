@@ -140,8 +140,7 @@ export const ViewComponent: React.FC = () => {
           </Table>
         </TableContainer>
       </div>
-      ;
-      <div className={classes.root}>
+      <div className={classes.root} id="button-back">
         <Button
           variant="contained"
           color="secondary"

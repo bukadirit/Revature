@@ -22,3 +22,9 @@ export interface Make {
   reimbAuthor: number;
   reimbTypeId: number;
 }
+
+export interface ReqUpdate {
+  id: number;
+  status: number;
+  reimbId: number;
+}

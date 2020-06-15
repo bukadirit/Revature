@@ -2,6 +2,7 @@ import { db } from "./db";
 import { ViewTicket, ViewTicketLine } from "../models/view_ticket";
 import { Ticket, TicketLine } from "../models/ticket";
 import { ManagerView, ManagerLine } from "../models/manager_view";
+import { UpdateView, UpdateLine } from "../models/ticket_update";
 
 export async function getAllTicket(): Promise<ManagerView[]> {
   const sql = `SELECT * FROM project1.mview`;
@@ -38,5 +39,20 @@ export async function createTicket(ticket: Ticket): Promise<Ticket> {
   } catch (error) {
     console.log(error);
     return;
+  }
+}
+
+export async function patchRequest(ticket: UpdateView): Promise<UpdateView> {
+  const sql = `UPDATE project1.ers_reimbursement SET reimb_resolver = COALESCE($1, reimb_resolver), reimb_status_id = COALESCE($2, reimb_status_id)  WHERE reimb_id = $3 RETURNING *`;
+
+  try {
+    const result = await db.query<UpdateLine>(sql, [
+      ticket.id,
+      ticket.status,
+      ticket.reimbId,
+    ]);
+    return result.rows.map(UpdateView.from)[0];
+  } catch (error) {
+    console.log(error);
   }
 }

@@ -10,7 +10,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import "./manager.component.css";
-import { getAllTicket, getSort } from "../../remote/auth";
+import { getAllTicket, getSort, sendRequest } from "../../remote/auth";
 import { ManagerView } from "../../remote/models/manager_ticket";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import FormControl from "@material-ui/core/FormControl";
@@ -54,6 +54,7 @@ export const ManagerComponent: React.FC = () => {
   const [a, setA] = useState<ManagerView[]>();
   const [status, setStatus] = useState<any>();
   const [request, setRequest] = useState<number>();
+  const [button, setButton] = useState<any>();
   let i = 1;
   const handleClick = () => {
     history.push("/portal");
@@ -67,9 +68,12 @@ export const ManagerComponent: React.FC = () => {
       setA(t.data);
     }
   };
-  const handleRequest = (item: number) => {
+  const handleRequest = (item: number, event: any) => {
     setRequest(item);
-    console.log(request);
+    setButton(event);
+    if (request) {
+      sendRequest(request, button);
+    }
   };
   useEffect(() => {
     const renderTicket = async () => {
@@ -79,7 +83,7 @@ export const ManagerComponent: React.FC = () => {
     try {
       renderTicket();
     } catch (error) {}
-  }, [status, request]);
+  }, [status, request, button]);
 
   return i === 0 ? (
     <div>"I dont think so buster"</div>
@@ -171,10 +175,19 @@ export const ManagerComponent: React.FC = () => {
                           color="secondary"
                           aria-label="contained primary button group"
                         >
-                          <Button onClick={() => handleRequest(item.reimbId)}>
+                          <Button
+                            value="2"
+                            onClick={(e) => {
+                              handleRequest(item.reimbId, 2);
+                            }}
+                          >
                             APPROVE
                           </Button>
-                          <Button onClick={() => console.log(item.reimbId)}>
+                          <Button
+                            onClick={(e) => {
+                              handleRequest(item.reimbId, 3);
+                            }}
+                          >
                             DENY
                           </Button>
                         </ButtonGroup>

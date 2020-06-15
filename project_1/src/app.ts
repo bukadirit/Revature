@@ -41,7 +41,10 @@ app.use((request, response, next) => {
   response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   response.setHeader("Access-Control-Allow-credentials", "true");
   response.setHeader("Access-Control-Allow-Headers", "content-type");
-  response.setHeader("Access-Control-Allow-Methods", "GET POST");
+  response.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, OPTIONS"
+  );
   next();
 });
 app.use("/", loginRouter);

@@ -3,6 +3,7 @@ import {
   makeTicket,
   getManagerTicket,
   sortTicket,
+  patchTicket,
 } from "../remote/user.remote";
 import { User } from "./models/otherTemplates";
 
@@ -55,4 +56,10 @@ export default {
   getLocalUser,
   setLocalUser,
   removeLocalUser,
+};
+
+export const sendRequest = (i: number, j: number) => {
+  const id = localStorage.getItem("id");
+  console.log(i + "  " + j);
+  patchTicket(id, j, i);
 };
