@@ -1,3 +1,5 @@
+/*istanbul ignore file*/
+
 import { db } from "./db";
 import { ViewTicket, ViewTicketLine } from "../models/view_ticket";
 import { Ticket, TicketLine } from "../models/ticket";

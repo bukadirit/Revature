@@ -1,3 +1,4 @@
+/*istanbul ignore file*/
 import { db } from "./db";
 import { ManagerView, ManagerLine } from "../models/manager_view";
 

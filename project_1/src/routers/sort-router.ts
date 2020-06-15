@@ -15,16 +15,15 @@ sortRouter.get(
     try {
       ticket = await sortService.sortTicket(option);
       //console.log(ticket);
-      response.json(ticket);
+      if (!ticket) {
+        response.sendStatus(404);
+      } else {
+        response.status(200).json(ticket);
+      }
     } catch (err) {
       response.sendStatus(500);
       //console.log(err);
       return;
-    }
-    if (!ticket) {
-      response.sendStatus(404);
-    } else {
-      response.json(ticket);
     }
     next();
   }

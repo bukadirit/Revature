@@ -7,24 +7,27 @@ import { Ticket } from "../models/ticket";
 import { UpdateView } from "../models/ticket_update";
 
 export const ticketRouter = express.Router();
-ticketRouter.get("/", async (request, response, next) => {
-  let ticket: ManagerView[];
-  try {
-    ticket = await ticketService.getAllTicket();
-    //console.log(ticket);
-    response.json(ticket);
-  } catch (err) {
-    response.sendStatus(500);
-    //console.log(err);
-    return;
+ticketRouter.get(
+  "/",
+  checkNotAuthenticated,
+  async (request, response, next) => {
+    let ticket: ManagerView[];
+    try {
+      ticket = await ticketService.getAllTicket();
+      //console.log(ticket);
+      if (!ticket) {
+        response.sendStatus(404);
+      } else {
+        response.json(ticket);
+      }
+    } catch (err) {
+      response.sendStatus(500);
+      //console.log(err);
+      return;
+    }
+    next();
   }
-  if (!ticket) {
-    response.sendStatus(404);
-  } else {
-    response.json(ticket);
-  }
-  next();
-});
+);
 
 ticketRouter.get(
   "/:id",
@@ -35,16 +38,15 @@ ticketRouter.get(
     try {
       ticket = await ticketService.getTicket(id);
       //console.log(ticket);
-      response.json(ticket);
+      if (!ticket) {
+        response.sendStatus(404);
+      } else {
+        response.json(ticket);
+      }
     } catch (err) {
       response.sendStatus(500);
       //console.log(err);
       return;
-    }
-    if (!ticket) {
-      response.sendStatus(404);
-    } else {
-      response.json(ticket);
     }
     next();
   }
@@ -62,7 +64,7 @@ ticketRouter.post(
       response.status(201);
       response.json(newTicket);
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       response.sendStatus(500);
       return;
     }
@@ -76,15 +78,14 @@ ticketRouter.patch("/", checkNotAuthenticated, async (request, response) => {
 
   try {
     ticket = await ticketService.patchTicket(item);
+    if (!ticket) {
+      response.sendStatus(404);
+    } else {
+      response.status(200);
+      response.json(ticket);
+    }
   } catch (err) {
     response.sendStatus(500);
     return;
-  }
-
-  if (!ticket) {
-    response.sendStatus(404);
-  } else {
-    response.status(200);
-    response.json(ticket);
   }
 });

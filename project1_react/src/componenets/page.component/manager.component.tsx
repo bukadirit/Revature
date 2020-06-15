@@ -71,8 +71,9 @@ export const ManagerComponent: React.FC = () => {
   const handleRequest = (item: number, event: any) => {
     setRequest(item);
     setButton(event);
-    if (request) {
+    if (request != undefined) {
       sendRequest(request, button);
+      window.location.reload(true);
     }
   };
   useEffect(() => {

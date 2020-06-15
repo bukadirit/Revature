@@ -40,5 +40,8 @@ export function createTicket(ticket: any): Promise<Ticket> {
 
 export function patchTicket(item: any): Promise<UpdateView> {
   const ticket = new UpdateView(item.id, item.status, item.reimbId);
+  if (!ticket.id) {
+    throw new Error("400");
+  }
   return ticketDao.patchRequest(ticket);
 }
