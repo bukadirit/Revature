@@ -1,4 +1,4 @@
-export class ViewTicket {
+export class ManagerView {
   id: number;
   firstName: string;
   lastName: string;
@@ -10,9 +10,10 @@ export class ViewTicket {
   receipt: Blob;
   status: string;
   type: string;
+  reimbId: number;
 
-  static from(obj: ViewTicketLine): ViewTicket {
-    const viewTicket = new ViewTicket(
+  static from(obj: ManagerLine): ManagerView {
+    const viewTicket = new ManagerView(
       obj.ers_user_id,
       obj.ers_first_name,
       obj.ers_last_name,
@@ -23,7 +24,8 @@ export class ViewTicket {
       obj.reimb_description,
       obj.reimb_receipt,
       obj.reimb_status,
-      obj.reimb_type
+      obj.reimb_type,
+      obj.reimb_id
     );
     return viewTicket;
   }
@@ -39,7 +41,8 @@ export class ViewTicket {
     description: string,
     receipt: Blob,
     status: string,
-    type: string
+    type: string,
+    reimbId: number
   ) {
     this.id = id;
     this.firstName = firstName;
@@ -52,10 +55,11 @@ export class ViewTicket {
     this.receipt = receipt;
     this.status = status;
     this.type = type;
+    this.reimbId = reimbId;
   }
 }
 
-export interface ViewTicketLine {
+export interface ManagerLine {
   ers_user_id: number;
   ers_first_name: string;
   ers_last_name: string;
@@ -67,4 +71,5 @@ export interface ViewTicketLine {
   reimb_receipt: Blob;
   reimb_status: string;
   reimb_type: string;
+  reimb_id: number;
 }

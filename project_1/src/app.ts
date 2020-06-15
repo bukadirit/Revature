@@ -3,6 +3,8 @@ import bodyParser from "body-parser";
 import { employeeRouter } from "./routers/employee-router";
 import { loginRouter } from "./auth/index";
 import { portalRouter } from "./routers/portal-router";
+import { ticketRouter } from "./routers/ticket-router";
+import { sortRouter } from "./routers/sort-router";
 import path from "path";
 import session from "express-session";
 const passport = require("passport");
@@ -35,9 +37,18 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 
+app.use((request, response, next) => {
+  response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  response.setHeader("Access-Control-Allow-credentials", "true");
+  response.setHeader("Access-Control-Allow-Headers", "content-type");
+  response.setHeader("Access-Control-Allow-Methods", "GET POST");
+  next();
+});
 app.use("/", loginRouter);
 app.use("/portal", portalRouter);
 app.use("/user", employeeRouter);
+app.use("/ticket", ticketRouter);
+app.use("/sort", sortRouter);
 
 app.listen(port, () => {
   console.log(`Home app running at http://localhost:${port}`);

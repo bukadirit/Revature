@@ -1,0 +1,45 @@
+#panels-layout {
+  display: flex;
+  height: 80vh;
+}
+
+#layout-top {
+  width: 20vw;
+  border: outset 6px #2b3241;
+}
+
+#container-attributes {
+  min-width: 20vw;
+  height: 40vh;
+  color: white;
+  margin: 0px;
+  text-align: center;
+}
+#card-head {
+  font-size: 1.9rem;
+  background-color: #2b3241;
+  min-height: 10vh;
+  padding-top: 10%;
+}
+#fixPadding {
+  padding: 0px;
+}
+
+#bg {
+  background-color: #2b3241;
+  padding-top: 10%;
+  transition: 1s;
+}
+
+#card-body {
+  font-size: 1.65rem;
+  transition: 0.7s;
+}
+
+#bg:hover {
+  background-color: white;
+}
+#card-body:hover {
+  font-size: 1.7rem;
+  color: #2b3241;
+}

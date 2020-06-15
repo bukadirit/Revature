@@ -16,14 +16,15 @@ async function initialize(passport) {
     pw = user.map((e) => e.password);
     role = user.map((e) => e.userRole);
     //console.log(role)
+
     if (user.length == 0) {
-      return done(null, false, { message: "User Does Not Exist" });
+      return done(null, false, { email: "User Does Not Exist" });
     }
     try {
       if (await bcrypt.compare(password, pw.toString())) {
         return done(null, user);
       } else {
-        return done(null, false, { message: "Incorrect Email or Password" });
+        return done(null, false, { password: "Incorrect Email or Password" });
       }
     } catch (e) {
       return done(e);

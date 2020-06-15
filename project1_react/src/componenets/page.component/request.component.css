@@ -1,0 +1,80 @@
+#portal-button {
+  font-size: 1.2rem;
+  margin-top: 10%;
+  margin-left: 25%;
+  width: 50vw;
+}
+
+#paper-back {
+  background-color: yellow;
+}
+
+#open-form {
+  background-color: #2b3241;
+  width: 80vw;
+  margin-left: 10%;
+  margin-top: 5%;
+  min-height: 40vh;
+  font-size: 1.4rem;
+  transition: 1.2s;
+}
+#cancel {
+  margin-right: 75%;
+}
+
+#open-form:hover {
+  background-color: white;
+  font-size: 1.7rem;
+  color: #2b3241;
+}
+#form-content {
+  background-color: #1f2430;
+}
+#form-text,
+#alert-dialog-title,
+#form-buttons {
+  background-color: #2b3241;
+}
+
+#head-text,
+#alert-dialog-description {
+  color: white;
+}
+#outlined-adornment-amount {
+  width: 25vw;
+  height: 3vh;
+  color: white;
+  font-size: 1.4rem;
+  margin-left: 10%;
+}
+
+#outlined-full-width {
+  width: 25vw;
+  height: 3vh;
+  color: white;
+  font-size: 1.4rem;
+}
+#outlined-disabled {
+  height: 3vh;
+  color: white;
+  font-size: 1.4rem;
+  background-color: #2b3241;
+}
+
+#t {
+  display: flex;
+}
+#upload {
+  height: 3vh;
+  font-size: 1.4rem;
+  margin-left: 20%;
+}
+#outlined-age-native-simple {
+  height: 3vh;
+  color: white;
+  font-size: 1.4rem;
+}
+
+#o {
+  background-color: #2b3241;
+}

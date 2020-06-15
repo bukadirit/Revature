@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import session from "express-session";
 const passport = require("passport");
 export const loginRouter = express.Router();
@@ -27,15 +27,10 @@ loginRouter.get("/", checkNotAuthenticated, (request, response) => {
   }
 });
 
-loginRouter.post(
-  "/",
-  checkNotAuthenticated,
-  passport.authenticate("local", {
-    successRedirect: "/portal",
-    failureRedirect: "/",
-    failureFlash: true,
-  })
-);
+loginRouter.post("/", passport.authenticate("local"), (req, res) => {
+  console.log(req.user);
+  res.status(200).json(req.user);
+});
 
 loginRouter.delete("/logout", (req, res) => {
   req.logOut();

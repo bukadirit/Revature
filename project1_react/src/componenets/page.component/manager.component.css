@@ -1,0 +1,36 @@
+#table-display {
+  margin-top: 5%;
+  background-color: #2b3241;
+}
+#table-text {
+  font-size: 0.8rem;
+  color: white;
+  text-align: justify;
+}
+
+#t-text {
+  font-size: 0.8rem;
+  color: white;
+  text-align: justify;
+}
+#view-button {
+  font-size: 1rem;
+  margin-top: 10px;
+  margin-left: 25%;
+  width: 50vw;
+}
+
+#button-back {
+  background-color: #2b3241;
+}
+#o {
+  background-color: #2b3241;
+  color: white;
+}
+#outlined-age-native-simple,
+#demo-simple-select-filled-label,
+#demo-simple-select-filled {
+  height: 3vh;
+  color: white;
+  font-size: 0.9rem;
+}

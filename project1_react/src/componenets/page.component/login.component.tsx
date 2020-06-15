@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import * as loginRemote from "../../remote/user.remote";
+import { setLocalUser } from "../../remote/auth";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -46,8 +49,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const LoginComponent: React.FC = () => {
+export const LoginComponent: React.FC<RouteComponentProps> = (props) => {
   const classes = useStyles();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState<string>();
+  const handleLogin = async () => {
+    const payload = {
+      email: email,
+      password: password,
+    };
+    try {
+      const r = await loginRemote.login(payload);
+      setLocalUser(r.data);
+      window.location.href = "/portal";
+    } catch (error) {
+      setErrors("Email or Password Incorrect. Please Try Again!");
+    }
+  };
 
   return (
     <div>
@@ -60,6 +79,7 @@ export const LoginComponent: React.FC = () => {
           <Typography component="h1" variant="h5">
             Log In
           </Typography>
+          <p id="errors-msg">{errors}</p>
           <form className={classes.form} noValidate>
             <TextField
               variant="outlined"
@@ -73,6 +93,8 @@ export const LoginComponent: React.FC = () => {
               autoFocus
               color="secondary"
               placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               variant="outlined"
@@ -86,21 +108,24 @@ export const LoginComponent: React.FC = () => {
               autoComplete="current-password"
               color="secondary"
               placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="secondary"
-              className={classes.submit}
-            >
-              Log In
-            </Button>
             <Grid container>
               <Grid item xs></Grid>
               <Grid item></Grid>
             </Grid>
           </form>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="secondary"
+            className={classes.submit}
+            onClick={() => handleLogin()}
+          >
+            Log In
+          </Button>
         </div>
         <Box mt={8}>
           <Copyright />
@@ -109,3 +134,4 @@ export const LoginComponent: React.FC = () => {
     </div>
   );
 };
+export default withRouter(LoginComponent);

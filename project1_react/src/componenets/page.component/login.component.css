@@ -5,3 +5,7 @@
 #form-text {
   color: white;
 }
+#errors-msg {
+  font-size: 1.2rem;
+  text-align: center;
+}
