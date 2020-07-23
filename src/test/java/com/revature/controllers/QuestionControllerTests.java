@@ -121,7 +121,7 @@ public class QuestionControllerTests {
 	}
 	
 	@Test
-	@WithMockUser(username = "user@rss.com", password = "Password123!", authorities = "user")
+	@WithMockUser(username = "admin@rss.com", password = "Password123!", authorities = "admin")
 	public void updateStatus() throws Exception {
 		Question questions, testQuestions;
 		questions = new Question(1,1,"title","content", LocalDate.MIN, LocalDate.MIN, false, 1);
@@ -137,8 +137,8 @@ public class QuestionControllerTests {
     			).andReturn();
 		
 		String content = result.getResponse().getContentAsString();
-		//assertEquals(200, result.getResponse().getStatus());
-		//assertTrue("This return object conains the string", content.contains("true"));
+		assertEquals(200, result.getResponse().getStatus());
+		assertTrue("This return object conains the string", content.contains("true"));
 		assertNotEquals(null, content);
 			
 	}
