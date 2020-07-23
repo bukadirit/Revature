@@ -71,6 +71,15 @@ public class QuestionServiceTest {
 		Page<Question> result = questionService.getAllQuestionsByUserId(PageRequest.of(1, 5), 1);
 		assertThat(result).contains(question);
 	}
+	/** @author ken */
+	@Test
+	public void getAllQuestionsByID() throws Exception {
+		Question question = new Question(1, 0, "Title", "Content", LocalDate.MIN, null, false, 1);
+		when(questionRepository.findById( Mockito.anyInt()))
+		.thenReturn(Optional.of(question));
+		Question result = questionService.findById(1);
+		assertEquals(result, question);
+	}
 	
 	/** @author ken */
 	@Test

@@ -136,9 +136,7 @@ public class RSSService {
 			
 			return userRepository.save(user);
 		}		
-		else {
-			return null;
-		}
+		return null;
 	}
 
 	/**
@@ -153,7 +151,7 @@ public class RSSService {
 	    String getPoints = rssServiceUrl+"/account/account";
 
 	    Optional<User> optUser = userRepository.findById(id);
-	    if (optUser!=null && optUser.isPresent()) {
+	    if (optUser.isPresent()) {
 	    	User user = optUser.get();
 	    
 	    	Map<String, Object> map = new HashMap<>();
@@ -165,9 +163,8 @@ public class RSSService {
 	    	
 	    	RSSAccountDTO account = response.getBody();
 	    	return account.getPoints();
-	    }else {
-	    	return 0;
 	    }
+	    return 0;
 
 	}
 
@@ -183,7 +180,7 @@ public class RSSService {
 		    headers.setContentType(MediaType.APPLICATION_JSON);
 		    headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 		    Optional<User> optUser = userRepository.findById(acc.getUserId());
-		    if (optUser!=null && optUser.isPresent()) {
+		    if ( optUser.isPresent()) {
 		    	User user = optUser.get();
 		    	
 		    	String addPoints = rssServiceUrl+"/account/points/a";
@@ -199,13 +196,11 @@ public class RSSService {
 					user.setPoints(user.getPoints()+acc.getPoints());
 					return userRepository.save(user);
 				}
-				else {
-					return null;
-				}
+
 		    }
-		    else {
-		    	return null;
-		    }
+		    return null;
+
+		   
 
 	}
 

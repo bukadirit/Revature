@@ -28,23 +28,24 @@ public class UserService {
 	 */
 
 	public User getUserById(int id) {
-		Optional<User> optUser = userRepository.findById(id);
-		if(optUser.isPresent()) {
-			User user = optUser.get();
 			try {
+				Optional<User> optUser = userRepository.findById(id);
+				if(optUser.isPresent()) {
+					User user = optUser.get();
 				
 				user.setPoints(rssService.getPoints(id));
-			}catch(Exception e){
-				
+				return userRepository.save(user);
+				}
+			}catch(Exception e) {
+				//add logger
+				return null;
 			}
-			return userRepository.save(user);
-		}
-		else {
 			return null;
-		}
+		
+		
 	}
-	public Collection<? extends GrantedAuthority> getAuthority(User u){
-		Collection<GrantedAuthority>auths = new ArrayList<GrantedAuthority>();
+	public Collection<GrantedAuthority> getAuthority(User u){
+		Collection<GrantedAuthority>auths = new ArrayList<>();
 		Optional<User> optUser = userRepository.findById(u.getUserID());
 		SimpleGrantedAuthority a= null; 
 		

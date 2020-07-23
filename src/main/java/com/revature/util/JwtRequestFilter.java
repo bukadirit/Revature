@@ -53,8 +53,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 					System.out.println(SecurityContextHolder.getContext());
 				}
 			}
-		}catch(Exception e){
-			System.out.println(e);
+		//add catch block with logger
 		}finally {
 			filterChain.doFilter(request,response);		
 		}

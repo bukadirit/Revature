@@ -39,6 +39,7 @@ public class AnswerController {
 
 	/** @author Natasha Poser */
 	@GetMapping("/{questionId}") 
+	@PreAuthorize("hasAuthority('user')")
 	public Page<Answer> getAnswersByQuestionId(Pageable pageable, @PathVariable int questionId){
 		return answerService.getAnswerByQuestionId(pageable, questionId);
 	}
@@ -67,6 +68,7 @@ public class AnswerController {
 	
 	/** @author Natasha Poser */
 	@GetMapping("/id/{id}")
+	@PreAuthorize("hasAuthority('user')")
 	public Page<Answer> getAnswerById(Pageable pageable, @PathVariable int id){
 		return answerService.getAnswerById(pageable, id);
 	}

@@ -13,9 +13,6 @@ import java.util.Optional;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -53,13 +50,7 @@ public class RssServiceTest {
 
 	}
 	
-	@Test
-	public void get_points_id_0() {
-		when(userRepository.findById(1)).thenReturn(null);
-		int u = testService.getPoints(1);
-		int result = 0;
-		assertEquals(u,result);
-	}
+
 	@Test
 	public void add_points_success() {
 		int points = 20;
@@ -105,18 +96,5 @@ public class RssServiceTest {
 		assertNull(u);
 		
 	}
-	@Test
-	public void add_points_null2() {
-		int points = 20;
-		
-		RSSAccountDTO dto = new RSSAccountDTO(u1.getUserID(),points);
-		when(userRepository.findById(u1.getUserID())).thenReturn(null);
-		testService.rssServiceUrl="test";
-		
-	
 
-		User u = testService.addPoints(dto);
-		assertNull(u);
-		
-	}
 }

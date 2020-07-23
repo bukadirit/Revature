@@ -17,6 +17,10 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtUtil implements Serializable {
 	
+	/**@Author Ryan Clayton
+	 * 
+	 */
+	private static final long serialVersionUID = 5855530699107877768L;
 	private String secret = "haishdoijocewpok";
 
 	

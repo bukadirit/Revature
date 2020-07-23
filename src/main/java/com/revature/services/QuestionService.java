@@ -71,21 +71,17 @@ public class QuestionService {
 		if(question.getId() == 0) {
 			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
 		}
-		
 		// ensures someone isn't maliciously updating the question
 		Optional<Question> optQuestion = questionRepository.findById(question.getId());
 		if(optQuestion.isPresent()) {
-			
 			// This overwrites the question from the parameter above, and replaces it with the one from the database
 			question = optQuestion.get();
 		}
-		
 		// If the status is already true OR the accepted id is 0/null then it will throw an error
-		if(question.isStatus() == true || question.getAcceptedId() == 0) {
+		if(question.isStatus() || question.getAcceptedId() == 0) {
 			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
 		}
-		
-		// Sets the status as true
+		// Sets the status as true3
 		question.setStatus(true);
 		
 		Optional<Answer> optAnswer = answerRepository.findById(question.getAcceptedId());

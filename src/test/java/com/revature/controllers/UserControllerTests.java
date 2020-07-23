@@ -65,7 +65,6 @@ public class UserControllerTests {
     			assertEquals(200, result.getResponse().getStatus());
     			//System.out.println(content);
     			assertTrue("This return object conains the string", content.contains("admin@rss.com"));
-    			assertNotEquals(u1, content);
     }
     
     @Test
