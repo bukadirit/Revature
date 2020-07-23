@@ -41,12 +41,15 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.Application;
+
+
 import com.revature.entities.Question;
 import com.revature.entities.User;
 import com.revature.services.QuestionService;
 
 
 @RunWith(SpringRunner.class)
+
 @ContextConfiguration
 @SpringBootTest(
 		webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
@@ -65,9 +68,11 @@ public class QuestionControllerTests {
 	@Autowired
 	private MockMvc mvc;
 	
+
 	@MockBean
 	private QuestionService questionService;
-	
+
+
     @Before                          
     public void setUp() {  
        u1 = new User(12,26,0,true,null,"admin@rss.com","Admin","Admin");
@@ -76,8 +81,9 @@ public class QuestionControllerTests {
    				.apply(springSecurity())
    				.build();
     }
+
 	@Test
-    @WithMockUser(username = "user@rss.com", password = "Password123!", authorities = "user")
+   @WithMockUser(username = "user@rss.com", password = "Password123!", authorities = "user")
 	public void testGetAllQuestionsHappyPath() throws Exception {
 		
 		// Create page of data
@@ -189,5 +195,7 @@ public class QuestionControllerTests {
 			.andExpect(jsonPath("$.content[0].id", is(1)));
 			
 	}
+
 	
+
 }

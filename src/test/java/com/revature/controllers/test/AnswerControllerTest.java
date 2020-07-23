@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -18,6 +19,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
@@ -33,6 +35,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.Application;
+
 import com.revature.entities.Answer;
 import com.revature.entities.User;
 import com.revature.services.AnswerService;
@@ -62,10 +65,6 @@ public class AnswerControllerTest {
 		System.out.println("I am testing the AnswerControllerTest");
 	}
 
-	
-	/**@author ken*/
-	@Test
-	@WithMockUser(username = "user@rss.com", password = "Password123!", authorities = "user")
 	@Before                          
     public void setUp() {  
        u1 = new User(12,26,0,true,null,"admin@rss.com","Admin","Admin");
@@ -78,6 +77,7 @@ public class AnswerControllerTest {
 	/**@author ken*/
 	@Test
     @WithMockUser(username = "user@rss.com", password = "Password123!", authorities = "user")
+
 	public void testGetAnswers() throws Exception{
 		List<Answer> answers = new ArrayList<>();
 		answers.add(new Answer(1, 1, 1, "Test content", LocalDate.MIN, LocalDate.MIN));
@@ -131,15 +131,17 @@ public class AnswerControllerTest {
 				.andExpect(jsonPath("$.content[0].id", is(1)));
 	}
 	
+
 	@Test
 	@WithMockUser(username = "user@rss.com", password = "Password123!", authorities = "user")
 	public void testGetAnswerAccepted() throws Exception {
 	
 	}
 
+
 	/** @author Natasha Poser */
 	@Test
-    @WithMockUser(username = "user@rss.com", password = "Password123!", authorities = "user")
+   @WithMockUser(username = "user@rss.com", password = "Password123!", authorities = "user")
 	public void testGetAnswerByQuestionId() throws Exception {
 		List<Answer> answers = new ArrayList<>();
 		answers.add(new Answer(1, 1, 1, "Test content", LocalDate.MIN, LocalDate.MIN));
@@ -159,6 +161,7 @@ public class AnswerControllerTest {
 	@Test
     @WithMockUser(username = "user@rss.com", password = "Password123!", authorities = "user")
 	public void testGetAcceptedAnswerByQuestionId() throws Exception {
+
 		List<Answer> answers = new ArrayList<>();
 		answers.add(new Answer(1, 1, 1, "Test content", LocalDate.MIN, LocalDate.MIN));
 		Page<Answer> pageResult = new PageImpl<>(answers);
@@ -172,6 +175,7 @@ public class AnswerControllerTest {
 						.contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 				.andExpect(jsonPath("$.content[0].id", is(1)));
 	}
+
 	/** @author Natasha Poser */
 	@Test
     @WithMockUser(username = "user@rss.com", password = "Password123!", authorities = "user")

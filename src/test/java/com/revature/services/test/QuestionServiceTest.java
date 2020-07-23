@@ -117,7 +117,6 @@ public class QuestionServiceTest {
 		Question result = questionService.save(question);
 		assertEquals(result, question);
 	}
-	
 	/**@author Bukadiri Trawally*/
 	@Test
 	public void updateQuestionAcceptedAnswerId_will_return_question() {
@@ -153,6 +152,7 @@ public class QuestionServiceTest {
 		Question q3 = questionService.updateQuestionStatus(q2, 0);
 		
 	}
+	
 	
 	/**@author Bukadiri Trawally*/
 	@Test
