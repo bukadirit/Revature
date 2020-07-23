@@ -1,19 +1,3 @@
-insert into roles (role) values ('employee'), ('admin');
-INSERT INTO users (user_id,account_id, points, admin_role, profile_picture, email, first_name, last_name) 
-VALUES (13, 15, 0, false, NULL, 'user@rss.com', 'User', 'User'), (12, 26, 0, true, NULL, 'admin@rss.com', 'Admin', 'Admin');
-insert into questions (title, content, creation_date, status, user_id)
-values ('dasf;ldajdf;lasfdk', 'lala', '2012-12-12', false, 13);
-insert into questions (title, content, creation_date, status, user_id)
-values ('test', 'test', '2012-12-12', false, 13);
-insert into answers (user_id, question_id, content, creation_date, edit_date)
-values (12, 1, 'lalalala', '2012-12-12', NULL), (12, 2, 'number2', '2012-12-12', NULL);
-insert into roles (role) values ('employee'), ('admin');
-INSERT INTO users (user_id,account_id, points, admin_role, profile_picture, email, first_name, last_name) 
-VALUES (13, 15, 0, false, NULL, 'user@rss.com', 'User', 'User');
-INSERT INTO users (user_id,account_id, points, admin_role, profile_picture, email, first_name, last_name) 
-VALUES (12, 26, 0, true, NULL, 'admin@rss.com', 'Admin', 'Admin');
-INSERT INTO users (user_id,account_id, points, admin_role, profile_picture, email, first_name, last_name) 
-VALUES (14, 27, 0, false, NULL, 'user2@rss.com', 'User2', 'User2');
 insert into questions (title, content, creation_date, status, user_id)
 VALUES ('question 1', 'question 1 content', '2012-12-12', false, 13),
 ('question 2', 'question 2 content', '2012-12-12', false, 13),
@@ -50,6 +34,7 @@ VALUES ('question 27', 'question 27 content', '2012-12-12', false, 13),
 ('question 29', 'question 29 content', '2012-12-12', false, 13),
 ('question 30', 'question 30 content', '2012-12-12', false, 13),
 ('question 31', 'question 31 content', '2012-12-12', false, 13);
+
 insert into answers (user_id, question_id, content, creation_date, edit_date)
 VALUES(14, 1, 'answer content 1', '2012-12-13', NULL), 
 (14, 1, 'answer content 2', '2012-12-13', NULL),

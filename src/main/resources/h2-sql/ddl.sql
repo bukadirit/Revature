@@ -1,19 +1,3 @@
-DROP TABLE IF EXISTS roles CASCADE;
-create table roles (
-	id INTEGER generated always as identity primary key,
-	role VARCHAR(20)
-);
-DROP TABLE IF EXISTS users;
-CREATE TABLE users (
-  user_id int PRIMARY KEY,
-  account_id int NOT NULL,
-  points int NOT NULL,
-  admin_role boolean NOT NULL,
-  profile_picture BYTEA,
-  email varchar(250) not null,
-  first_name varchar(250) NOT NULL,
-  last_name varchar(250) NOT NULL
-);
 DROP TABLE IF EXISTS questions CASCADE;
 create table questions (
 	id INTEGER generated always as identity primary key,
@@ -33,6 +17,7 @@ create table answers (
 	creation_date TIMESTAMP NOT NULL,
 	edit_date TIMESTAMP
 );
+--h2:referencail integrety error fix
 DROP TABLE questions CASCADE;
 create table questions (
 	id INTEGER generated always as identity primary key,

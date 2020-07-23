@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	    protected void configure(HttpSecurity httpSecurity) throws Exception {
 	 		httpSecurity.headers().frameOptions().disable();
 	        httpSecurity.cors().and().
-	        	csrf().disable().authorizeRequests().antMatchers("/login","/h2-console/**").permitAll().
+	        	csrf().disable().authorizeRequests().antMatchers("/login","/h2-console/**","/swagger-ui.html#/**").permitAll().
 	        	anyRequest().authenticated()
 	        	.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	        httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

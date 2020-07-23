@@ -5,7 +5,7 @@ name: Analysis with SonarScanner
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, security-api-merge ]
   pull_request:
       types: [opened, synchronize, reopened]
 

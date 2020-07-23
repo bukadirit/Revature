@@ -7,6 +7,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>RevOverflow</name>
 	<description>This is the back end for RevOverflow, group 200427's project 3.</description>
+	<packaging>jar</packaging>
+
 	<!-- Java 1.8 -->
 	<properties>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -169,6 +171,28 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+  				<groupId>com.spotify</groupId>
+  				<artifactId>dockerfile-maven-plugin</artifactId>
+  				<version>1.4.13</version>
+  				<executions>
+					<execution>
+      					<id>default</id>
+      					<goals>
+        					<!-- Build Goals - Currently only build to local docker repository,
+								could add push to also push to a remote docker repository -->
+							<goal>build</goal>
+      					</goals>
+    				</execution>
+  				</executions>
+  				<configuration>
+					<repository>revature/revoverflow-backend</repository>
+					<tag>${project.version}</tag>
+					<buildArgs>
+						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+					</buildArgs>
+  				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<!-- Add Spring repositories -->
@@ -196,4 +220,12 @@
 			<url>https://repo.spring.io/milestone</url>
 		</pluginRepository>
 	</pluginRepositories>
+	<distributionManagement>
+		<repository>
+			<id>dockerhub</id>
+			<name>Dockerhub</name>
+			<url>docker.io</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
 </project>
